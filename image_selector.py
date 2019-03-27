@@ -1,12 +1,5 @@
 #!/usr/bin/env python
-##############################################################################
-# Copyright (c) 2012 Hajime Nakagami<nakagami@gmail.com>
-# All rights reserved.
-# Licensed under the New BSD License
-# (http://www.freebsd.org/copyright/freebsd-license.html)
-#
-# A image viewer. Require Pillow ( https://pypi.python.org/pypi/Pillow/ ).
-##############################################################################
+
 import PIL.Image
 try:
     from Tkinter import *
