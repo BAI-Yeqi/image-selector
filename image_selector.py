@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-
+'''
+author: Bai Yeqi
+'''
 import PIL.Image
 try:
     from Tkinter import *
@@ -48,6 +50,11 @@ class App(Frame):
         Button(fram, text="Next", command=self.seek_next).pack(side=LEFT)
         Button(fram, text="Save", command=self.save).pack(side=LEFT)
         Label(fram, textvariable=self.num_page_tv).pack(side=LEFT)
+        # textbox
+        self.T = Text(fram, height=1, width=10)
+        self.T.pack(side=LEFT)
+        self.T.insert(END, "Image ID")
+        Button(fram, text="Go", command=self.go).pack(side=LEFT)
         fram.pack(side=TOP, fill=BOTH)
 
         self.sg_la = Label(self)
@@ -165,6 +172,14 @@ class App(Frame):
         copyfile(base_filename, os.path.join(self.sel_dir, str(self.im_id) + "_base" + ".png"))
         copyfile(top1_filename, os.path.join(self.sel_dir, str(self.im_id) + "_top1" + ".png"))
         copyfile(top2_filename, os.path.join(self.sel_dir, str(self.im_id) + "_top2" + ".png"))
+
+    def go(self):
+        self.im_id = int(self.T.get("1.0",END))
+        if self.im_id < 0:
+            self.im_id = 0
+        self.open_folders()
+        self.chg_images()
+        self.num_page_tv.set(str(self.im_id))
 
     '''
     def open(self):
